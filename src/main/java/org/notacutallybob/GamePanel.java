@@ -8,20 +8,22 @@ import java.awt.Graphics2D;
 import javax.swing.*;
 
 import org.notacutallybob.entity.Player;
+import org.notacutallybob.tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
 
-    final int maxScreenColumns = 16;
-    final int maxScreenRows = 12;
+    public final int maxScreenColumns = 16;
+    public final int maxScreenRows = 12;
 
     final int FPS = 60;
 
     final int screenWidth = maxScreenColumns * tileSize;
     final int screenHeigth = maxScreenRows * tileSize;
 
+    TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
 
@@ -73,6 +75,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
+        tileManager.draw(g2);
 
         player.draw(g2);
 
