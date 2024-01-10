@@ -7,10 +7,12 @@ import java.awt.Graphics2D;
 
 import javax.swing.*;
 
+import org.notacutallybob.entity.Player;
+
 public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16;
     final int scale = 3;
-    final int tileSize = originalTileSize * scale;
+    public final int tileSize = originalTileSize * scale;
 
     final int maxScreenColumns = 16;
     final int maxScreenRows = 12;
@@ -23,9 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
 
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 5;
+    Player player = new Player(this, keyHandler);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeigth));
@@ -67,25 +67,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if(keyHandler.upPressed) {
-            playerY -= playerSpeed;
-        } else if(keyHandler.downPressed) {
-            playerY += playerSpeed;
-        }
-
-        if(keyHandler.leftPressed) {
-            playerX -= playerSpeed;
-        } else if(keyHandler.rightPressed) {
-            playerX += playerSpeed;
-        }
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(Color.WHITE);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        player.draw(g2);
+
         g2.dispose();
     }
 }
