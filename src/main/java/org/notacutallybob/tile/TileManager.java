@@ -19,7 +19,7 @@ public class TileManager {
         this.gamePanel = gamePanel;
         
         tiles = new Tile[10];
-        mapTileNum = new int[gamePanel.maxScreenColumns][gamePanel.maxScreenRows];
+        mapTileNum = new int[gamePanel.maxWorldColumns][gamePanel.maxWorldRows];
         loadMap("/maps/map01.txt");
 
         getTileImage();
@@ -30,11 +30,11 @@ public class TileManager {
             InputStream is = getClass().getResourceAsStream(path);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
 
-            for (int row = 0; row < gamePanel.maxScreenRows; row++) {
+            for (int row = 0; row < gamePanel.maxWorldRows; row++) {
                 String line = bufferedReader.readLine();
 
                 String[] split = line.split(" ");
-                for (int column = 0; column < gamePanel.maxScreenColumns; column++) {
+                for (int column = 0; column < gamePanel.maxWorldColumns; column++) {
                     mapTileNum[column][row] = Integer.parseInt(split[column]);
                 }
             }
@@ -68,13 +68,23 @@ public class TileManager {
     }
 
     public void draw(Graphics2D g2) {
-        for (int column = 0; column < gamePanel.maxScreenColumns; column++) {
-            for (int row = 0; row < gamePanel.maxScreenRows; row++) {
-                int x = gamePanel.tileSize * column;
-                int y = gamePanel.tileSize * row;
+        for (int worldColumn = 0; worldColumn < gamePanel.maxWorldColumns; worldColumn++) {
+            for (int worldRow = 0; worldRow < gamePanel.maxWorldRows; worldRow++) {
+                int worldX = gamePanel.tileSize * worldColumn;
+                int worldY = gamePanel.tileSize * worldRow;
 
-                int tileType = mapTileNum[column][row];
-                g2.drawImage(tiles[tileType].image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+                int screenX = worldX - gamePanel.player.worldX + gamePanel.player.screenX;
+                int screenY = worldY - gamePanel.player.worldY + gamePanel.player.screenY;
+
+                if(worldX > gamePanel.player.worldX + gamePanel.player.screenX + gamePanel.tileSize || 
+                    worldX < gamePanel.player.worldX - gamePanel.player.screenX - gamePanel.tileSize  ||
+                    worldY > gamePanel.player.worldY + gamePanel.player.screenY + gamePanel.tileSize  ||
+                    worldY < gamePanel.player.worldY - gamePanel.player.screenY - gamePanel.tileSize ) {
+                    continue;
+                }
+
+                int tileType = mapTileNum[worldColumn][worldRow];
+                g2.drawImage(tiles[tileType].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
             }
         }
     }
