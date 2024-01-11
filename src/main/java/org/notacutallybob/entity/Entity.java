@@ -1,5 +1,6 @@
 package org.notacutallybob.entity;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public abstract class Entity {
@@ -11,4 +12,7 @@ public abstract class Entity {
 
     public int spriteCounter = 0;
     public int spriteNumber = 1;
+    
+    public Rectangle collisionBox;
+    public boolean collisionOn = false;
 }

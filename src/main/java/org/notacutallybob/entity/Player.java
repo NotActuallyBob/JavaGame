@@ -2,6 +2,7 @@ package org.notacutallybob.entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -14,8 +15,6 @@ public class Player extends Entity {
     GamePanel gamePanel;
     KeyHandler keyHandler;
 
-    public int worldX;
-    public int worldY;
     public final int screenX;
     public final int screenY;
 
@@ -25,6 +24,12 @@ public class Player extends Entity {
 
         this.screenX = gamePanel.screenWidth / 2 - gamePanel.tileSize /2;
         this.screenY = gamePanel.screenHeigth / 2 - gamePanel.tileSize /2;
+
+        collisionBox = new Rectangle();
+        collisionBox.x = 8;
+        collisionBox.y = 16;
+        collisionBox.width = 32;
+        collisionBox.height = 32; 
 
         init();
     }
@@ -53,22 +58,6 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if(keyHandler.upPressed) {
-            worldY -= speed;
-            direction = "up";
-        } else if(keyHandler.downPressed) {
-            worldY += speed;
-            direction = "down";
-        }
-
-        if(keyHandler.leftPressed) {
-            worldX -= speed;
-            direction = "left";
-        } else if(keyHandler.rightPressed) {
-            worldX += speed;
-            direction = "right";
-        }
-
         if( keyHandler.upPressed ||
             keyHandler.downPressed ||
             keyHandler.leftPressed ||
@@ -81,6 +70,40 @@ public class Player extends Entity {
                     spriteNumber = 1;
                 }
                 spriteCounter = 0;
+            }
+
+            if(keyHandler.upPressed) {
+                direction = "up";
+            } else if(keyHandler.downPressed) {
+                direction = "down";
+            }
+
+            if(keyHandler.leftPressed) {
+                direction = "left";
+            } else if(keyHandler.rightPressed) {
+                direction = "right";
+            }
+
+            collisionOn = false;
+            gamePanel.collisionManager.checkTile(this);
+
+            if(!collisionOn){
+                switch (direction) {
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
