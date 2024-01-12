@@ -13,18 +13,13 @@ import org.notacutallybob.KeyHandler;
 import org.notacutallybob.Vector2D;
 
 public class Player extends Character {
-    GamePanel gamePanel;
     KeyHandler keyHandler;
-
-    public final int screenX;
-    public final int screenY;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
 
-        this.screenX = gamePanel.screenWidth / 2 - gamePanel.tileSize /2;
-        this.screenY = gamePanel.screenHeigth / 2 - gamePanel.tileSize /2;
+        this.size = new Vector2D(gamePanel.tileSize, gamePanel.tileSize);
 
         collisionBox = new Rectangle();
         collisionBox.x = 8;
@@ -58,6 +53,12 @@ public class Player extends Character {
     }
 
     public void update() {
+        updateScreenPosition(worldPosition);
+
+        if(keyHandler.shootPressed) {
+            gamePanel.projectiles.add(new Projectile(gamePanel, new Vector2D(worldPosition)));
+        }
+
         if( keyHandler.upPressed ||
             keyHandler.downPressed ||
             keyHandler.leftPressed ||
@@ -84,10 +85,10 @@ public class Player extends Character {
                 direction = "right";
             }
 
-            collisionOn = false;
+            collided = false;
             gamePanel.collisionManager.checkTile(this);
 
-            if(!collisionOn){
+            if(!collided){
                 switch (direction) {
                     case "up":
                         worldPosition.setY(worldPosition.getY() - speed);
@@ -156,7 +157,7 @@ public class Player extends Character {
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(image, screenPosition.getX(), screenPosition.getY(), gamePanel.tileSize, gamePanel.tileSize, null);
 
         // g2.setColor(Color.WHITE);
         // g2.fillRect(positionX, positionY, gamePanel.tileSize, gamePanel.tileSize);

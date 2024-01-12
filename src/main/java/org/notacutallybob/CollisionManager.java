@@ -29,7 +29,7 @@ public class CollisionManager {
                 tileType1 = gamePanel.tileManager.mapTileNum[entityLeftColumn][entityTopRow];
                 tileType2 = gamePanel.tileManager.mapTileNum[entityRightColumn][entityTopRow];
                 if(gamePanel.tileManager.tileTypes[tileType1].collision || gamePanel.tileManager.tileTypes[tileType2].collision){
-                    entity.collisionOn = true;
+                    entity.collided = true;
                 }
                 break;
             case "down":
@@ -37,7 +37,7 @@ public class CollisionManager {
                 tileType1 = gamePanel.tileManager.mapTileNum[entityLeftColumn][entityBottomRow];
                 tileType2 = gamePanel.tileManager.mapTileNum[entityRightColumn][entityBottomRow];
                 if(gamePanel.tileManager.tileTypes[tileType1].collision || gamePanel.tileManager.tileTypes[tileType2].collision){
-                    entity.collisionOn = true;
+                    entity.collided = true;
                 }
                 break;
             case "left":
@@ -45,7 +45,7 @@ public class CollisionManager {
                 tileType1 = gamePanel.tileManager.mapTileNum[entityLeftColumn][entityTopRow];
                 tileType2 = gamePanel.tileManager.mapTileNum[entityLeftColumn][entityBottomRow];
                 if(gamePanel.tileManager.tileTypes[tileType1].collision || gamePanel.tileManager.tileTypes[tileType2].collision){
-                    entity.collisionOn = true;
+                    entity.collided = true;
                 }
                 break;
             case "right":
@@ -53,7 +53,7 @@ public class CollisionManager {
                 tileType1 = gamePanel.tileManager.mapTileNum[entityRightColumn][entityTopRow];
                 tileType2 = gamePanel.tileManager.mapTileNum[entityRightColumn][entityBottomRow];
                 if(gamePanel.tileManager.tileTypes[tileType1].collision || gamePanel.tileManager.tileTypes[tileType2].collision){
-                    entity.collisionOn = true;
+                    entity.collided = true;
                 }
                 break;
             default:

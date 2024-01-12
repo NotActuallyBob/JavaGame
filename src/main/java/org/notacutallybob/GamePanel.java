@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
 import org.notacutallybob.entity.Player;
+import org.notacutallybob.entity.Projectile;
 import org.notacutallybob.tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -30,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
     public CollisionManager collisionManager = new CollisionManager(this);
+    public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     Thread gameThread;
 
     public Player player = new Player(this, keyHandler);
@@ -75,6 +78,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         player.update();
+        for (int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).update();
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -84,6 +90,10 @@ public class GamePanel extends JPanel implements Runnable {
         tileManager.draw(g2);
 
         player.draw(g2);
+
+        for (int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).draw(g2);
+        }
 
         g2.dispose();
     }

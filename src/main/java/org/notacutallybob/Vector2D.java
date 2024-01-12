@@ -9,6 +9,11 @@ public class Vector2D {
         this.y = y;
     }
 
+    public Vector2D (Vector2D vector2d) {
+        this.x = vector2d.x;
+        this.y = vector2d.y;
+    }
+
     public void set(int x, int y){
         this.x = x;
         this.y = y;

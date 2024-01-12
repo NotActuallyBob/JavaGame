@@ -76,13 +76,13 @@ public class TileManager {
                 int worldX = gamePanel.tileSize * worldColumn;
                 int worldY = gamePanel.tileSize * worldRow;
 
-                int screenX = worldX - gamePanel.player.worldPosition.getX() + gamePanel.player.screenX;
-                int screenY = worldY - gamePanel.player.worldPosition.getY() + gamePanel.player.screenY;
+                int screenX = worldX - gamePanel.player.worldPosition.getX() + gamePanel.player.screenPosition.getX();
+                int screenY = worldY - gamePanel.player.worldPosition.getY() + gamePanel.player.screenPosition.getY();
 
-                if(worldX > gamePanel.player.worldPosition.getX() + gamePanel.player.screenX + gamePanel.tileSize || 
-                    worldX < gamePanel.player.worldPosition.getX() - gamePanel.player.screenX - gamePanel.tileSize  ||
-                    worldY > gamePanel.player.worldPosition.getY() + gamePanel.player.screenY + gamePanel.tileSize  ||
-                    worldY < gamePanel.player.worldPosition.getY() - gamePanel.player.screenY - gamePanel.tileSize ) {
+                if(worldX > gamePanel.player.worldPosition.getX() + gamePanel.player.screenPosition.getX() + gamePanel.tileSize || 
+                    worldX < gamePanel.player.worldPosition.getX() - gamePanel.player.screenPosition.getX() - gamePanel.tileSize  ||
+                    worldY > gamePanel.player.worldPosition.getY() + gamePanel.player.screenPosition.getY() + gamePanel.tileSize  ||
+                    worldY < gamePanel.player.worldPosition.getY() - gamePanel.player.screenPosition.getY() - gamePanel.tileSize ) {
                     continue;
                 }
 
