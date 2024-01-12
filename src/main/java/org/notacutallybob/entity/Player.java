@@ -10,8 +10,9 @@ import javax.imageio.ImageIO;
 
 import org.notacutallybob.GamePanel;
 import org.notacutallybob.KeyHandler;
+import org.notacutallybob.Vector2D;
 
-public class Player extends Entity {
+public class Player extends Character {
     GamePanel gamePanel;
     KeyHandler keyHandler;
 
@@ -35,8 +36,7 @@ public class Player extends Entity {
     }
 
     public void init() {
-        worldX = gamePanel.tileSize * 25;
-        worldY = gamePanel.tileSize * 25;
+        worldPosition = new Vector2D(gamePanel.tileSize * 25, gamePanel.tileSize * 25);
         speed = 5;
         direction = "down";
         getPlayerImage();
@@ -90,16 +90,16 @@ public class Player extends Entity {
             if(!collisionOn){
                 switch (direction) {
                     case "up":
-                        worldY -= speed;
+                        worldPosition.setY(worldPosition.getY() - speed);
                         break;
                     case "down":
-                        worldY += speed;
+                        worldPosition.setY(worldPosition.getY() + speed);
                         break;
                     case "left":
-                        worldX -= speed;
+                        worldPosition.setX(worldPosition.getX() - speed);
                         break;
                     case "right":
-                        worldX += speed;
+                        worldPosition.setX(worldPosition.getX() + speed);
                         break;
                     default:
                         break;

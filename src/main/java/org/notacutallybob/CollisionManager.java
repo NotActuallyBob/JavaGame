@@ -1,5 +1,6 @@
 package org.notacutallybob;
 
+import org.notacutallybob.entity.Character;
 import org.notacutallybob.entity.Entity;
 
 public class CollisionManager {
@@ -9,11 +10,11 @@ public class CollisionManager {
         this.gamePanel = gamePanel;
     }
 
-    public void checkTile(Entity entity) {
-        int entityLeftWorldX = entity.worldX + entity.collisionBox.x;
-        int entityRightWorldX = entity.worldX + entity.collisionBox.x + entity.collisionBox.width;
-        int entityTopWorldY = entity.worldY + entity.collisionBox.y;
-        int entityBottomWorldY = entity.worldY + entity.collisionBox.y + entity.collisionBox.height;
+    public void checkTile(Character entity) {
+        int entityLeftWorldX = entity.worldPosition.getX() + entity.collisionBox.x;
+        int entityRightWorldX = entity.worldPosition.getX() + entity.collisionBox.x + entity.collisionBox.width;
+        int entityTopWorldY = entity.worldPosition.getY() + entity.collisionBox.y;
+        int entityBottomWorldY = entity.worldPosition.getY() + entity.collisionBox.y + entity.collisionBox.height;
 
         int entityLeftColumn = entityLeftWorldX / gamePanel.tileSize;
         int entityRightColumn = entityRightWorldX / gamePanel.tileSize;
