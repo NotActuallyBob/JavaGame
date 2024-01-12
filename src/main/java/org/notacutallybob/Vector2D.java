@@ -1,8 +1,8 @@
 package org.notacutallybob;
 
 public class Vector2D {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public Vector2D (int x, int y) {
         this.x = x;
@@ -38,5 +38,23 @@ public class Vector2D {
 
     public int getY() {
         return y;
+    }
+
+    public void move(Vector2D vector2d) {
+        this.x += vector2d.getX();
+        this.y += vector2d.getY();
+    }
+
+    public void move(int x, int y) {
+        this.x += x;
+        this.y += y;
+    }
+
+    public void moveX(int x) {
+        this.x += x;
+    }
+
+    public void moveY(int y) {
+        this.y += y;
     }
 }

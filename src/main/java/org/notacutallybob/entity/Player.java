@@ -91,16 +91,16 @@ public class Player extends Character {
             if(!collided){
                 switch (direction) {
                     case "up":
-                        worldPosition.setY(worldPosition.getY() - speed);
+                        worldPosition.moveY(-speed);
                         break;
                     case "down":
-                        worldPosition.setY(worldPosition.getY() + speed);
+                        worldPosition.moveY(speed);
                         break;
                     case "left":
-                        worldPosition.setX(worldPosition.getX() - speed);
+                        worldPosition.moveX(-speed);
                         break;
                     case "right":
-                        worldPosition.setX(worldPosition.getX() + speed);
+                        worldPosition.moveX(speed);
                         break;
                     default:
                         break;
