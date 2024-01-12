@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import org.notacutallybob.GamePanel;
 import org.notacutallybob.KeyHandler;
 import org.notacutallybob.Vector2D;
+import org.notacutallybob.entity.Animation.PlayerAnimation;
 
 public class Player extends Character {
     KeyHandler keyHandler;
@@ -20,6 +21,7 @@ public class Player extends Character {
         this.keyHandler = keyHandler;
 
         this.size = new Vector2D(gamePanel.tileSize, gamePanel.tileSize);
+        this.animation = new PlayerAnimation();
 
         collisionBox = new Rectangle();
         collisionBox.x = 8;
@@ -34,23 +36,9 @@ public class Player extends Character {
         worldPosition = new Vector2D(gamePanel.tileSize * 25, gamePanel.tileSize * 25);
         speed = 5;
         direction = "down";
-        getPlayerImage();
     }
 
-    public void getPlayerImage() {
-        try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
+    
 
     public void update() {
         updateScreenPosition(worldPosition);
@@ -63,15 +51,8 @@ public class Player extends Character {
             keyHandler.downPressed ||
             keyHandler.leftPressed ||
             keyHandler.rightPressed) {
-            spriteCounter++;
-            if(spriteCounter > 12) {
-                if(spriteNumber == 1) {
-                    spriteNumber = 2;
-                } else if (spriteNumber == 2) {
-                    spriteNumber = 1;
-                }
-                spriteCounter = 0;
-            }
+
+            animation.tick();
 
             if(keyHandler.upPressed) {
                 direction = "up";
@@ -110,54 +91,7 @@ public class Player extends Character {
     }
 
     public void draw(Graphics2D g2) {
-        BufferedImage image = null;
-
-        switch (direction) {
-            case "up":
-                if(spriteNumber == 1){
-                    image = up1;    
-                }
-                if(spriteNumber == 2) {
-                    image = up2;
-                }
-                
-                break;
-        
-            case "down":
-                if(spriteNumber == 1){
-                    image = down1;    
-                }
-                if(spriteNumber == 2) {
-                    image = down2;
-                }
-                
-                break;
-            
-            case "left":
-                if(spriteNumber == 1){
-                    image = left1;    
-                }
-                if(spriteNumber == 2) {
-                    image = left2;
-                }
-                
-                break;
-        
-            case "right":
-                if(spriteNumber == 1){
-                    image = right1;    
-                }
-                if(spriteNumber == 2) {
-                    image = right2;
-                }
-                
-                break;
-
-            default:
-                break;
-        }
-
-        g2.drawImage(image, screenPosition.getX(), screenPosition.getY(), gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(animation.getImage(direction), screenPosition.getX(), screenPosition.getY(), gamePanel.tileSize, gamePanel.tileSize, null);
 
         // g2.setColor(Color.WHITE);
         // g2.fillRect(positionX, positionY, gamePanel.tileSize, gamePanel.tileSize);
