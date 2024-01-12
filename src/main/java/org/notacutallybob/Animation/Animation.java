@@ -1,4 +1,4 @@
-package org.notacutallybob.entity.Animation;
+package org.notacutallybob.Animation;
 
 import java.awt.image.BufferedImage;
 

@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import org.notacutallybob.entity.Player;
-import org.notacutallybob.entity.Projectile;
 import org.notacutallybob.tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -33,6 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyHandler = new KeyHandler();
     public CollisionManager collisionManager = new CollisionManager(this);
     public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+    public Vector2D cameraPosition = new Vector2D(0 * tileSize, 0 * tileSize);
     Thread gameThread;
 
     public Player player = new Player(this, keyHandler);
