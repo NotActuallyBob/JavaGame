@@ -1,53 +1,44 @@
 package org.notacutallybob;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
-import org.notacutallybob.Animation.Animation;
-import org.notacutallybob.Animation.PlayerAnimation;
+import org.notacutallybob.draw.Layer;
+import org.notacutallybob.draw.sprite.BoxSprite;
+import org.notacutallybob.draw.sprite.Sprite;
 
 public class Player {
     GamePanel gamePanel;
     KeyHandler keyHandler;
-    Animation animation;
+
+    Sprite sprite;
+
     public Vector2D worldPosition;
-    public Vector2D screenPosition;
-    Vector2D collisionSize;
-    Vector2D drawSize;
+
     int speed;
     String direction;
-
-    public boolean collided = false;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
-        this.screenPosition = new Vector2D(0, 0);
-
-        this.collisionSize = new Vector2D(gamePanel.tileSize/2, gamePanel.tileSize/2);
-        this.drawSize = new Vector2D(gamePanel.tileSize, gamePanel.tileSize);
-        this.animation = new PlayerAnimation();
 
         init();
     }
 
     public void init() {
         worldPosition = new Vector2D(gamePanel.tileSize * 8, gamePanel.tileSize * 6);
+        sprite = new BoxSprite(worldPosition, new Vector2D(gamePanel.tileSize, gamePanel.tileSize), new Vector2D(-gamePanel.tileSize / 2, -gamePanel.tileSize / 2), Layer.Player, Color.RED);
         gamePanel.camera.worldPosition = worldPosition;
         speed = 5;
         direction = "down";
     }
 
     public void update() {
-        if(keyHandler.shootPressed) {
-            gamePanel.projectiles.add(new Projectile(gamePanel, new Vector2D(worldPosition)));
-        }
 
         if( keyHandler.upPressed ||
             keyHandler.downPressed ||
             keyHandler.leftPressed ||
             keyHandler.rightPressed) {
 
-            animation.tick();
 
             if(keyHandler.upPressed) {
                 direction = "up";
@@ -61,40 +52,7 @@ public class Player {
                 direction = "right";
             }
 
-            collided = gamePanel.collisionManager.checkTile(moveVectorInDirection(new Vector2D(worldPosition), direction), drawSize, collisionSize);
-
-            if(!collided){
-                moveVectorInDirection(worldPosition, direction);
-            }
+            worldPosition.move(direction, speed);
         }
-    }
-
-    public Vector2D moveVectorInDirection(Vector2D vector2d, String direction) {
-        switch (direction) {
-            case "up":
-                vector2d.moveY(-speed);
-                break;
-            case "down":
-                vector2d.moveY(speed);
-                break;
-            case "left":
-                vector2d.moveX(-speed);
-                break;
-            case "right":
-                vector2d.moveX(speed);
-                break;
-            default:
-                break;
-        }
-        return vector2d;
-    }
-
-    public void draw(Graphics2D g2) {
-        gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
-        screenPosition.move(-drawSize.getX() / 2, -drawSize.getY() / 2); //Offset player to the center of screen
-        g2.drawImage(animation.getImage(direction), screenPosition.getX(), screenPosition.getY(), drawSize.getX(), drawSize.getY(), null);
-
-        // g2.setColor(Color.WHITE);
-        // g2.fillRect(positionX, positionY, gamePanel.tileSize, gamePanel.tileSize);
     }
 }

@@ -4,9 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Initial Commit">
+    <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Implementing drawing through DrawingManager singleton">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/DrawManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/Drawable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/Layer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/Sprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Animation/Animation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Animation/CharacterAnimation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Animation/PlayerAnimation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/CollisionManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Projectile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Vector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +32,23 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2als4jQODi1TqaU9atlOW9LbrMQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -34,6 +57,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -43,9 +67,30 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.notacutallybob.Main" />
+      <module name="JavaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notacutallybob.draw.sprite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Implementing drawing through DrawingManager singleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing drawing through DrawingManager singleton" />
   </component>
 </project>

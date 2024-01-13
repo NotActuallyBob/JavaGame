@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
+import org.notacutallybob.draw.DrawManager;
 import org.notacutallybob.tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -30,8 +30,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
-    public CollisionManager collisionManager = new CollisionManager(this);
-    public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     public Camera camera = new Camera(this, new Vector2D(0 * tileSize, 0 * tileSize), new Vector2D(screenWidth, screenHeigth));
     Thread gameThread;
 
@@ -43,6 +41,12 @@ public class GamePanel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
+
+        init();
+    }
+
+    public void init() {
+        DrawManager.getInstance().changeCamera(camera);
     }
 
     public void startGameThread() {
@@ -78,22 +82,14 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         player.update();
-        for (int i = 0; i < projectiles.size(); i++) {
-            projectiles.get(i).update();
-        }
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        tileManager.draw(g2);
+        DrawManager.getInstance().draw(g2);
 
-        player.draw(g2);
-
-        for (int i = 0; i < projectiles.size(); i++) {
-            projectiles.get(i).draw(g2);
-        }
         g2.drawRect(windowMargin.getX(), windowMargin.getY(), screenWidth, screenHeigth);
         g2.dispose();
     }
