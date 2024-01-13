@@ -19,6 +19,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxScreenRows = 12;
     public final int screenWidth = maxScreenColumns * tileSize;
     public final int screenHeigth = maxScreenRows * tileSize;
+    public Vector2D windowMargin = new Vector2D(100, 50);
 
     public final int maxWorldColumns = 50;
     public final int maxWorldRows = 50;
@@ -31,13 +32,13 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyHandler = new KeyHandler();
     public CollisionManager collisionManager = new CollisionManager(this);
     public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-    public Vector2D cameraPosition = new Vector2D(0 * tileSize, 0 * tileSize);
+    public Camera camera = new Camera(this, new Vector2D(0 * tileSize, 0 * tileSize), new Vector2D(screenWidth, screenHeigth));
     Thread gameThread;
 
     public Player player = new Player(this, keyHandler);
 
     public GamePanel() {
-        this.setPreferredSize(new Dimension(screenWidth, screenHeigth));
+        this.setPreferredSize(new Dimension(screenWidth + windowMargin.getX() * 2, screenHeigth + windowMargin.getY() * 2));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
@@ -93,7 +94,7 @@ public class GamePanel extends JPanel implements Runnable {
         for (int i = 0; i < projectiles.size(); i++) {
             projectiles.get(i).draw(g2);
         }
-
+        g2.drawRect(windowMargin.getX(), windowMargin.getY(), screenWidth, screenHeigth);
         g2.dispose();
     }
 }

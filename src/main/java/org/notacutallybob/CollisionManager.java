@@ -7,11 +7,11 @@ public class CollisionManager {
         this.gamePanel = gamePanel;
     }
 
-    public boolean checkTile(Vector2D worldPosition, Vector2D size) {
-        int entityLeftWorldX = worldPosition.getX() - size.getX() / 2;
-        int entityRightWorldX = worldPosition.getX() + size.getX() / 2;
-        int entityTopWorldY = worldPosition.getY() - size.getY() / 2;
-        int entityBottomWorldY = worldPosition.getY() + size.getY() / 2;
+    public boolean checkTile(Vector2D worldPosition, Vector2D drawSize, Vector2D collisionSize) {
+        int entityLeftWorldX = worldPosition.getX() - collisionSize.getX() / 2;
+        int entityRightWorldX = worldPosition.getX() + collisionSize.getX() / 2;
+        int entityTopWorldY = worldPosition.getY() - collisionSize.getY() / 2;
+        int entityBottomWorldY = worldPosition.getY() + collisionSize.getY() / 2;
 
         int entityLeftColumn = entityLeftWorldX / gamePanel.tileSize;
         int entityRightColumn = entityRightWorldX / gamePanel.tileSize;

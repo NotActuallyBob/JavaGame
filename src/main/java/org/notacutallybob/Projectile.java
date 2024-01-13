@@ -20,15 +20,11 @@ public class Projectile {
     }
 
     public void update() {
-        updateScreenPosition();
-    }
-
-    void updateScreenPosition() {
-        this.screenPosition.setX(worldPosition.getX() - gamePanel.cameraPosition.getX() + gamePanel.screenWidth / 2 - drawSize.getX() / 2);
-        this.screenPosition.setY(worldPosition.getY() - gamePanel.cameraPosition.getY() + gamePanel.screenHeigth / 2 - drawSize.getY() / 2);
     }
 
     public void draw(Graphics2D g2) {
+        gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
+        screenPosition.move(drawSize.getX() / 2, drawSize.getY() /2);
         g2.drawRect(screenPosition.getX(), screenPosition.getY(), drawSize.getX(), drawSize.getY());
     }
 }

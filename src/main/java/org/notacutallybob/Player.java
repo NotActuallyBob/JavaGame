@@ -31,19 +31,13 @@ public class Player {
     }
 
     public void init() {
-        worldPosition = new Vector2D(gamePanel.tileSize * 25, gamePanel.tileSize * 25);
-        gamePanel.cameraPosition = worldPosition;
+        worldPosition = new Vector2D(gamePanel.tileSize * 8, gamePanel.tileSize * 6);
+        gamePanel.camera.worldPosition = worldPosition;
         speed = 5;
         direction = "down";
     }
 
-    void updateScreenPosition() {
-        this.screenPosition.setX(worldPosition.getX() - gamePanel.cameraPosition.getX() + gamePanel.screenWidth / 2 - drawSize.getX() / 2);
-        this.screenPosition.setY(worldPosition.getY() - gamePanel.cameraPosition.getY() + gamePanel.screenHeigth / 2 - drawSize.getY() / 2);
-    }
-
     public void update() {
-        System.out.println(worldPosition);
         if(keyHandler.shootPressed) {
             gamePanel.projectiles.add(new Projectile(gamePanel, new Vector2D(worldPosition)));
         }
@@ -67,7 +61,7 @@ public class Player {
                 direction = "right";
             }
 
-            collided = gamePanel.collisionManager.checkTile(moveVectorInDirection(new Vector2D(worldPosition), direction), collisionSize);
+            collided = gamePanel.collisionManager.checkTile(moveVectorInDirection(new Vector2D(worldPosition), direction), drawSize, collisionSize);
 
             if(!collided){
                 moveVectorInDirection(worldPosition, direction);
@@ -96,7 +90,8 @@ public class Player {
     }
 
     public void draw(Graphics2D g2) {
-        updateScreenPosition();
+        gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
+        screenPosition.move(-drawSize.getX() / 2, -drawSize.getY() / 2); //Offset player to the center of screen
         g2.drawImage(animation.getImage(direction), screenPosition.getX(), screenPosition.getY(), drawSize.getX(), drawSize.getY(), null);
 
         // g2.setColor(Color.WHITE);

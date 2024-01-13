@@ -9,14 +9,17 @@ import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
 import org.notacutallybob.GamePanel;
+import org.notacutallybob.Vector2D;
 
 public class TileManager {
     GamePanel gamePanel;
     public Tile[] tileTypes;
     public int mapTileNum[][];
+    public Vector2D tileDrawSize;
 
     public TileManager (GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+        tileDrawSize = new Vector2D(gamePanel.tileSize, gamePanel.tileSize);
         
         tileTypes = new Tile[10];
         mapTileNum = new int[gamePanel.maxWorldColumns][gamePanel.maxWorldRows];
@@ -73,19 +76,17 @@ public class TileManager {
     public void draw(Graphics2D g2) {
         for (int worldColumn = 0; worldColumn < gamePanel.maxWorldColumns; worldColumn++) {
             for (int worldRow = 0; worldRow < gamePanel.maxWorldRows; worldRow++) {
-                int worldX = gamePanel.tileSize * worldColumn;
-                int worldY = gamePanel.tileSize * worldRow;
-
-                int screenX = worldX - gamePanel.cameraPosition.getX() + gamePanel.screenWidth / 2;
-                int screenY = worldY - gamePanel.cameraPosition.getY() + gamePanel.screenHeigth / 2;
-
-                if(screenX > gamePanel.screenWidth || screenX < 0 ||
-                    screenY > gamePanel.screenHeigth || screenY < 0) {
+                Vector2D worldPosition = new Vector2D(gamePanel.tileSize * worldColumn, gamePanel.tileSize * worldRow);
+                Vector2D screenPosition = new Vector2D(0, 0);
+                
+                if(!gamePanel.camera.isVisible(worldPosition, tileDrawSize)){
                     continue;
                 }
+                
+                gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
 
                 int tileType = mapTileNum[worldColumn][worldRow];
-                g2.drawImage(tileTypes[tileType].image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+                g2.drawImage(tileTypes[tileType].image, screenPosition.getX(), screenPosition.getY(), gamePanel.tileSize, gamePanel.tileSize, null);
             }
         }
     }
