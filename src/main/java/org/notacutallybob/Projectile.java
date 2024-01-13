@@ -23,8 +23,8 @@ public class Projectile {
     }
 
     public void draw(Graphics2D g2) {
-        gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
-        screenPosition.move(drawSize.getX() / 2, drawSize.getY() /2);
-        g2.drawRect(screenPosition.getX(), screenPosition.getY(), drawSize.getX(), drawSize.getY());
+        // gamePanel.camera.getScreenPosition(screenPosition, worldPosition);
+        // screenPosition.move(drawSize.getX() / 2, drawSize.getY() /2);
+        // g2.drawRect(screenPosition.getX(), screenPosition.getY(), drawSize.getX(), drawSize.getY());
     }
 }

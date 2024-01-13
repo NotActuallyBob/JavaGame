@@ -11,9 +11,11 @@ public class Camera {
         this.captureSize = captureSize;
     }
 
-    public void updateScreenPosition (Vector2D screenPosition, Vector2D gameObjectWorldPosition) {
+    public Vector2D getScreenPosition (Vector2D gameObjectWorldPosition) {
+        Vector2D screenPosition = new Vector2D(0, 0);
         screenPosition.setX(gamePanel.windowMargin.getX() + gameObjectWorldPosition.getX() - worldPosition.getX() + gamePanel.screenWidth / 2 );
         screenPosition.setY(gamePanel.windowMargin.getY() + gameObjectWorldPosition.getY() - worldPosition.getY() + gamePanel.screenHeigth / 2);
+        return screenPosition;
     }
 
     public boolean isVisible(Vector2D gameObjectWorldPosition, Vector2D drawSize) {

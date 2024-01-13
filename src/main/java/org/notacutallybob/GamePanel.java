@@ -30,7 +30,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
-    public CollisionManager collisionManager = new CollisionManager(this);
     public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     public Camera camera = new Camera(this, new Vector2D(0 * tileSize, 0 * tileSize), new Vector2D(screenWidth, screenHeigth));
     Thread gameThread;

@@ -77,13 +77,12 @@ public class TileManager {
         for (int worldColumn = 0; worldColumn < gamePanel.maxWorldColumns; worldColumn++) {
             for (int worldRow = 0; worldRow < gamePanel.maxWorldRows; worldRow++) {
                 Vector2D worldPosition = new Vector2D(gamePanel.tileSize * worldColumn, gamePanel.tileSize * worldRow);
-                Vector2D screenPosition = new Vector2D(0, 0);
                 
                 if(!gamePanel.camera.isVisible(worldPosition, tileDrawSize)){
                     continue;
                 }
                 
-                gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
+                Vector2D screenPosition = gamePanel.camera.getScreenPosition(worldPosition);
 
                 int tileType = mapTileNum[worldColumn][worldRow];
                 g2.drawImage(tileTypes[tileType].image, screenPosition.getX(), screenPosition.getY(), gamePanel.tileSize, gamePanel.tileSize, null);
