@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Implementing drawing through DrawingManager singleton">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/DrawManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/Drawable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/Layer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/Sprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/animated/AnimationColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/animated/BoxAnimation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Animation/Animation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Animation/CharacterAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Animation/PlayerAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/CollisionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Projectile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/Vector2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -57,7 +44,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",

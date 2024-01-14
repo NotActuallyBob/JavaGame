@@ -21,4 +21,8 @@ public class BoxSprite extends Sprite {
         g2.fillRect(screenPosition.getX(), screenPosition.getY(), size.getX(), size.getY());
         g2.setColor(Color.BLACK);
     }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }
