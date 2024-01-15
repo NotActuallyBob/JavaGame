@@ -1,5 +1,7 @@
 package org.notacutallybob.draw.animation;
 
+import org.notacutallybob.draw.sprite.Sprite;
+
 public abstract class AbstractAnimation implements Animation {
     int framesUntilNext;
     int framesPassedAfterSwitch;

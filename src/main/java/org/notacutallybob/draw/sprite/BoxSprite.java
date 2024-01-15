@@ -16,7 +16,7 @@ public class BoxSprite extends Sprite {
 
     @Override
     public void draw(Graphics2D g2, Camera camera) {
-        super.draw(g2, camera);
+        updateSpritePosition(camera);
         g2.setColor(color);
         g2.fillRect(screenPosition.getX(), screenPosition.getY(), size.getX(), size.getY());
         g2.setColor(Color.BLACK);

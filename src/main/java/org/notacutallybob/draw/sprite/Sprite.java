@@ -32,8 +32,7 @@ public abstract class Sprite implements Drawable {
         return layer;
     }
 
-    @Override
-    public void draw(Graphics2D g2, Camera camera) {
+    protected void updateSpritePosition(Camera camera) {
         spriteWorldPosition.set(ownerWorldPosition.getX() + offset.getX(), ownerWorldPosition.getY() + offset.getY());
         screenPosition.set(camera.updateScreenPosition(spriteWorldPosition));
     }
