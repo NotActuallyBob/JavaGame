@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class ImageSprite extends Sprite {
 
-    BufferedImage image;
+    private BufferedImage image;
 
     public ImageSprite(Vector2D ownerWorldPosition, Vector2D size, Vector2D offset, Layer layer, String pathToImage) {
         super(ownerWorldPosition, size, offset, layer);

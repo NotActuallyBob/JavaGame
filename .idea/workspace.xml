@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Reimplemented player walk Animation">
+    <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Encapsulating Animation classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/AbstractAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/AbstractAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/BoxAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/BoxAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/ImageAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/ImageAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/ImageSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/ImageSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +89,7 @@
       <workItem from="1704904315172" duration="410000" />
       <workItem from="1705326330320" duration="11346000" />
       <workItem from="1705400045249" duration="38000" />
-      <workItem from="1705400735594" duration="244000" />
+      <workItem from="1705400735594" duration="753000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -130,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705334114965</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Encapsulating Animation classes">
+      <option name="closed" value="true" />
+      <created>1705401000237</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705401000237</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +152,8 @@
     <MESSAGE value="Changed to Animation interface" />
     <MESSAGE value="Implemented ImageAnimation class" />
     <MESSAGE value="Reimplemented player walk Animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reimplemented player walk Animation" />
+    <MESSAGE value="Encapsulating Animation classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Encapsulating Animation classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

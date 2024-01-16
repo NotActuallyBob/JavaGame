@@ -7,7 +7,7 @@ import org.notacutallybob.draw.Layer;
 import java.awt.*;
 
 public class BoxSprite extends Sprite {
-    Color color;
+    private Color color;
 
     public BoxSprite(Vector2D ownerWorldPosition, Vector2D size, Vector2D offset, Layer layer, Color color) {
         super(ownerWorldPosition, size, offset, layer);

@@ -9,12 +9,12 @@ import org.notacutallybob.draw.Layer;
 import java.awt.*;
 
 public abstract class Sprite implements Drawable {
-    Vector2D ownerWorldPosition;
-    Vector2D spriteWorldPosition;
-    Vector2D screenPosition;
-    Vector2D size;
-    Vector2D offset;
-    Layer layer;
+    protected Vector2D ownerWorldPosition;
+    protected Vector2D spriteWorldPosition;
+    protected Vector2D screenPosition;
+    protected Vector2D size;
+    protected Vector2D offset;
+    protected Layer layer;
 
     public Sprite(Vector2D ownerWorldPosition, Vector2D size, Vector2D offset, Layer layer) {
         this.ownerWorldPosition = ownerWorldPosition;
