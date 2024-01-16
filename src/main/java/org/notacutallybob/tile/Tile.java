@@ -1,8 +1,14 @@
 package org.notacutallybob.tile;
 
-import java.awt.image.BufferedImage;
+import org.notacutallybob.Vector2D;
+import org.notacutallybob.draw.sprite.Sprite;
 
 public class Tile {
-    public BufferedImage image;
-    public boolean collision = false;
+    Vector2D worldPosition;
+    Sprite sprite;
+
+    public Tile(Vector2D worldPosition, Sprite sprite) {
+        this.worldPosition = worldPosition;
+        this.sprite = sprite;
+    }
 }

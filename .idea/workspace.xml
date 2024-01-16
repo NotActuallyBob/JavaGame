@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Initial Commit">
+    <list default="true" id="3358f9ed-23f5-40fb-8861-3708d968d1d2" name="Changes" comment="Encapsulating Animation classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/BoxSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/ImageSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/ImageSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/sprite/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/notacutallybob/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,36 +19,65 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2als4jQODi1TqaU9atlOW9LbrMQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.notacutallybob.Main" />
+      <module name="JavaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.notacutallybob.draw.sprite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,6 +87,9 @@
       <option name="presentableId" value="Default" />
       <updated>1704904314074</updated>
       <workItem from="1704904315172" duration="410000" />
+      <workItem from="1705326330320" duration="11346000" />
+      <workItem from="1705400045249" duration="38000" />
+      <workItem from="1705400735594" duration="753000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -64,7 +99,47 @@
       <option name="project" value="LOCAL" />
       <updated>1704904443640</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implemented ColorAnimation">
+      <option name="closed" value="true" />
+      <created>1705236395731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705236395732</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Changed to Animation interface">
+      <option name="closed" value="true" />
+      <created>1705327286997</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705327286997</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented ImageAnimation class">
+      <option name="closed" value="true" />
+      <created>1705328396175</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1705328396175</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Reimplemented player walk Animation">
+      <option name="closed" value="true" />
+      <created>1705334114965</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705334114965</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Encapsulating Animation classes">
+      <option name="closed" value="true" />
+      <created>1705401000237</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705401000237</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -72,6 +147,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Implementing drawing through DrawingManager singleton" />
+    <MESSAGE value="Implemented ColorAnimation" />
+    <MESSAGE value="Changed to Animation interface" />
+    <MESSAGE value="Implemented ImageAnimation class" />
+    <MESSAGE value="Reimplemented player walk Animation" />
+    <MESSAGE value="Encapsulating Animation classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Encapsulating Animation classes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/BoxAnimation.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/notacutallybob/draw/animation/AbstractAnimation.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

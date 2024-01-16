@@ -58,6 +58,29 @@ public class Vector2D {
         this.y += y;
     }
 
+    public void move(String direction, int length) {
+        switch (direction) {
+            case "up":
+                this.moveY(-length);
+                break;
+            case "down":
+                this.moveY(length);
+                break;
+            case "left":
+                this.moveX(-length);
+                break;
+            case "right":
+                this.moveX(length);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static Vector2D zeroVector() {
+        return new Vector2D(0, 0);
+    }
+
     @Override
     public String toString() {
         return "x: " + x + ", y: " + y;

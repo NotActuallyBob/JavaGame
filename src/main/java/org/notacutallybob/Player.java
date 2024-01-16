@@ -1,45 +1,55 @@
 package org.notacutallybob;
 
-import java.awt.Graphics2D;
-
-import org.notacutallybob.Animation.Animation;
-import org.notacutallybob.Animation.PlayerAnimation;
+import org.notacutallybob.draw.Layer;
+import org.notacutallybob.draw.animation.ImageAnimation;
+import org.notacutallybob.draw.animation.Animation;
+import org.notacutallybob.draw.sprite.ImageSprite;
 
 public class Player {
     GamePanel gamePanel;
     KeyHandler keyHandler;
-    Animation animation;
+
+    ImageSprite sprite;
+    Animation currentAnimation;
+    Animation animationNone, animationUp, animationDown, animationLeft, animationRight;
+
     public Vector2D worldPosition;
-    public Vector2D screenPosition;
-    Vector2D collisionSize;
-    Vector2D drawSize;
+
     int speed;
     String direction;
-
-    public boolean collided = false;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
-        this.screenPosition = new Vector2D(0, 0);
-
-        this.collisionSize = new Vector2D(gamePanel.tileSize/2, gamePanel.tileSize/2);
-        this.drawSize = new Vector2D(gamePanel.tileSize, gamePanel.tileSize);
-        this.animation = new PlayerAnimation();
 
         init();
     }
 
     public void init() {
         worldPosition = new Vector2D(gamePanel.tileSize * 8, gamePanel.tileSize * 6);
+
+        sprite = new ImageSprite(worldPosition, new Vector2D(gamePanel.tileSize, gamePanel.tileSize), new Vector2D(-gamePanel.tileSize / 2, -gamePanel.tileSize / 2), Layer.Player, "/player/boy_up_1.png");
+
+        String[] imagePathsUp = new String[]{"/player/boy_up_1.png", "/player/boy_up_2.png"};
+        String[] imagePathsDown = new String[]{"/player/boy_down_1.png", "/player/boy_down_2.png"};
+        String[] imagePathsLeft = new String[]{"/player/boy_left_1.png", "/player/boy_left_2.png"};
+        String[] imagePathsRight = new String[]{"/player/boy_right_1.png", "/player/boy_right_2.png"};
+
+        animationUp = new ImageAnimation(sprite, imagePathsUp, 12);
+        animationDown = new ImageAnimation(sprite, imagePathsDown, 12);
+        animationLeft = new ImageAnimation(sprite, imagePathsLeft, 12);
+        animationRight = new ImageAnimation(sprite, imagePathsRight, 12);
+
+        currentAnimation = null;
+
         gamePanel.camera.worldPosition = worldPosition;
         speed = 5;
         direction = "down";
     }
 
     public void update() {
-        if(keyHandler.shootPressed) {
-            gamePanel.projectiles.add(new Projectile(gamePanel, new Vector2D(worldPosition)));
+        if(currentAnimation != null){
+            currentAnimation.tick();
         }
 
         if( keyHandler.upPressed ||
@@ -47,54 +57,26 @@ public class Player {
             keyHandler.leftPressed ||
             keyHandler.rightPressed) {
 
-            animation.tick();
 
             if(keyHandler.upPressed) {
                 direction = "up";
+                currentAnimation = animationUp;
             } else if(keyHandler.downPressed) {
                 direction = "down";
+                currentAnimation = animationDown;
             }
 
             if(keyHandler.leftPressed) {
                 direction = "left";
+                currentAnimation = animationLeft;
             } else if(keyHandler.rightPressed) {
                 direction = "right";
+                currentAnimation = animationRight;
             }
 
-            collided = gamePanel.collisionManager.checkTile(moveVectorInDirection(new Vector2D(worldPosition), direction), drawSize, collisionSize);
-
-            if(!collided){
-                moveVectorInDirection(worldPosition, direction);
-            }
+            worldPosition.move(direction, speed);
+        } else {
+            currentAnimation = null;
         }
-    }
-
-    public Vector2D moveVectorInDirection(Vector2D vector2d, String direction) {
-        switch (direction) {
-            case "up":
-                vector2d.moveY(-speed);
-                break;
-            case "down":
-                vector2d.moveY(speed);
-                break;
-            case "left":
-                vector2d.moveX(-speed);
-                break;
-            case "right":
-                vector2d.moveX(speed);
-                break;
-            default:
-                break;
-        }
-        return vector2d;
-    }
-
-    public void draw(Graphics2D g2) {
-        gamePanel.camera.updateScreenPosition(screenPosition, worldPosition);
-        screenPosition.move(-drawSize.getX() / 2, -drawSize.getY() / 2); //Offset player to the center of screen
-        g2.drawImage(animation.getImage(direction), screenPosition.getX(), screenPosition.getY(), drawSize.getX(), drawSize.getY(), null);
-
-        // g2.setColor(Color.WHITE);
-        // g2.fillRect(positionX, positionY, gamePanel.tileSize, gamePanel.tileSize);
     }
 }
