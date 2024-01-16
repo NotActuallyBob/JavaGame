@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ImageAnimation extends AbstractAnimation {
-    ImageSprite imageSprite;
-    BufferedImage[] imageArray;
+    private ImageSprite imageSprite;
+    private BufferedImage[] imageArray;
 
     public ImageAnimation (ImageSprite imageSprite, String[] imagePaths, int framesUntilNext) {
         super(framesUntilNext);
@@ -18,7 +18,7 @@ public class ImageAnimation extends AbstractAnimation {
         loadImages(imagePaths);
     }
 
-    public void loadImages(String[] imagePaths) {
+    private void loadImages(String[] imagePaths) {
         imageArray = new BufferedImage[imagePaths.length];
         for (int i = 0; i < imagePaths.length; i++) {
             try {
@@ -30,7 +30,7 @@ public class ImageAnimation extends AbstractAnimation {
     }
 
     @Override
-    void next() {
+    protected void next() {
         imageSprite.setImage(imageArray[index]);
     }
 }

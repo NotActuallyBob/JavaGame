@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BoxAnimation extends AbstractAnimation {
-    BoxSprite boxSprite;
-    Color[] colorArray;
+    private BoxSprite boxSprite;
+    private Color[] colorArray;
 
     public BoxAnimation(BoxSprite boxSprite, Color[] colors, int framesUntilNext) {
         super(framesUntilNext);
@@ -18,7 +18,7 @@ public class BoxAnimation extends AbstractAnimation {
     }
 
     @Override
-    void next() {
+    protected void next() {
         boxSprite.setColor(colorArray[index]);
     }
 }

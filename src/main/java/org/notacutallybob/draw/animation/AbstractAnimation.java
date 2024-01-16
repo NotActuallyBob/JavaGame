@@ -3,10 +3,10 @@ package org.notacutallybob.draw.animation;
 import org.notacutallybob.draw.sprite.Sprite;
 
 public abstract class AbstractAnimation implements Animation {
-    int framesUntilNext;
-    int framesPassedAfterSwitch;
-    int index;
-    int animationLength;
+    protected int framesUntilNext;
+    protected int framesPassedAfterSwitch;
+    protected int index;
+    protected int animationLength;
 
     public AbstractAnimation (int framesUntilNext) {
         this.framesUntilNext = framesUntilNext;
@@ -27,5 +27,5 @@ public abstract class AbstractAnimation implements Animation {
         next();
     }
 
-    abstract void next();
+    protected abstract void next();
 }
